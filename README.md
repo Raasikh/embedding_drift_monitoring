@@ -1,9 +1,4 @@
-# Embedding-Drift Impact Reduction Through Continuous Monitoring & Automated Retraining
 
-
----
-
-## What Does This Actually Mean? (Plain English)
 
 Your ML system uses **embeddings** (dense vectors) to represent items, users, or documents. These embeddings are learned when you train the model.
 
