@@ -4,10 +4,6 @@ Embedding-Drift Impact Reduction Through Continuous Monitoring
 & Automated Retraining Triggers
 =============================================================================
 
-Resume Bullet:
-"Embedding-drift impact reduction of 32% through continuous embedding-space
-monitoring and automated retraining triggers"
-
 What This Project Teaches You:
 ------------------------------
 1. WHAT is embedding drift? → Embeddings degrade over time as data changes
@@ -811,65 +807,7 @@ print("""
 
 # %%
 # =============================================================================
-# SECTION 10: INTERVIEW TALKING POINTS
-# =============================================================================
-
-print("""
-╔══════════════════════════════════════════════════════════════════════╗
-║                    INTERVIEW TALKING POINTS                         ║
-╠══════════════════════════════════════════════════════════════════════╣
-║                                                                      ║
-║  Q: "What is embedding drift?"                                     ║
-║  A: "When the real-world data distribution shifts but your model's   ║
-║      embeddings stay frozen from training time. The gap between what ║
-║      embeddings represent and current reality grows, causing silent  ║
-║      retrieval quality degradation. Think: your 2023 embeddings     ║
-║      can't capture 2024 concepts."                                  ║
-║                                                                      ║
-║  Q: "How did you detect drift?"                                    ║
-║  A: "We built a monitoring pipeline that computed five metrics on a  ║
-║      schedule: centroid shift (global distribution movement), KL     ║
-║      divergence (statistical distribution change), neighborhood      ║
-║      stability (are nearest neighbors changing?), per-item cosine   ║
-║      drift, and recall@K as the business metric."                   ║
-║                                                                      ║
-║  Q: "What were the retraining triggers?"                            ║
-║  A: "Three types: threshold-based (centroid shift > 0.04), rate-of- ║
-║      change (recall drops >5% in one period), and composite (multi- ║
-║      metric). Built-in cooldown prevents trigger storms. When fired, ║
-║      it kicks off a SageMaker training job automatically."          ║
-║                                                                      ║
-║  Q: "How did you measure the 32% reduction?"                       ║
-║  A: "We compared cumulative recall loss over time: no monitoring    ║
-║      (fixed schedule retraining) vs. automated monitoring. The      ║
-║      monitored system caught drift early and retrained proactively, ║
-║      reducing total retrieval quality degradation by ~32%."         ║
-║                                                                      ║
-║  Q: "What tools did you use?"                                      ║
-║  A: "Airflow DAGs for scheduled metric computation, Prometheus +    ║
-║      Grafana for dashboarding, SageMaker for training pipelines,    ║
-║      and FAISS for the actual vector index. Considered Arize        ║
-║      Phoenix and Evidently AI for the monitoring layer."            ║
-║                                                                      ║
-║  Q: "Why not just retrain on a fixed schedule?"                     ║
-║  A: "Two problems. First, you waste compute retraining when there's ║
-║      no significant drift. Second, and more importantly, you MISS   ║
-║      sudden drift events between scheduled retrains. Our monitoring ║
-║      caught a sudden distribution shift within one time step that   ║
-║      fixed-schedule retraining wouldn't catch for another 8 steps." ║
-║                                                                      ║
-║  Q: "What types of drift did you handle?"                           ║
-║  A: "Three types: gradual (slow behavior changes), sudden (new      ║
-║      product launches or market disruptions), and seasonal (holiday ║
-║      shopping patterns). Each requires different detection           ║
-║      sensitivity — seasonal drift needs baseline adjustment."       ║
-║                                                                      ║
-╚══════════════════════════════════════════════════════════════════════╝
-""")
-
-# %%
-# =============================================================================
-# SECTION 11: CONCEPT MAP
+# SECTION : CONCEPT MAP
 # =============================================================================
 
 print("""
