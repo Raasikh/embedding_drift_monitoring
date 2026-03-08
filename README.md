@@ -1,9 +1,5 @@
 # Embedding-Drift Impact Reduction Through Continuous Monitoring & Automated Retraining
 
-## Resume Bullet
-> **"Embedding-drift impact reduction of 32% through continuous embedding-space monitoring and automated retraining triggers"**
-
-A runnable, end-to-end project that teaches you exactly what every word means — with code you can step through, modify, and explain in an interview.
 
 ---
 
